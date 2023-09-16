@@ -1,0 +1,18 @@
+namespace example;
+
+struct Person {
+    name: String
+    age: Int
+}
+
+fun main() -> Void {
+    let variable: Int = 10;
+    let anotherVariable: Int = 5;
+    let stringfiedVariable: String = "This is my string with multiple words";
+
+    if (variable > anotherVariable) {
+        print(":)");
+    } else {
+        print(":(");
+    }
+}
