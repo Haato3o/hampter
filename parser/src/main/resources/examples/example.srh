@@ -24,7 +24,6 @@ fun main() -> void {
     let variable: int = 10;
     let variablePtr: *int = &variable;
     let stringfiedVariable: String = "This is my string with multiple words";
-    let
 
     if (variable > *variablePtr) {
         print("Poggies");

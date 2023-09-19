@@ -1,6 +1,6 @@
 package dev.haato.sarah.lexer
 
-import dev.haato.sarah.lexer.stream.TokenizableStream
+import dev.haato.sarah.lexer.stream.StringTokenizableStream
 import dev.haato.sarah.lexer.token.SarahToken
 import dev.haato.sarah.metadata.FileMetadata
 import io.kotest.core.spec.style.ShouldSpec
@@ -25,7 +25,7 @@ class SarahLexerTest : ShouldSpec({
                 "return", "string", ".", "length", ";",
                 "}"
             )
-            val stream = TokenizableStream(fileName, input)
+            val stream = StringTokenizableStream(fileName, input)
             val lexer = SarahLexer(stream)
             val result = lexer.tokenize()
             val resultTokens = result.map { it.value }
@@ -55,7 +55,7 @@ class SarahLexerTest : ShouldSpec({
                 SarahToken(value = "Int", metadata = FileMetadata(35, 2, fileName)),
                 SarahToken(value = "}", metadata = FileMetadata(39, 2, fileName)),
             )
-            val stream = TokenizableStream(fileName, input)
+            val stream = StringTokenizableStream(fileName, input)
             val lexer = SarahLexer(stream)
 
             lexer.tokenize() shouldContainInOrder expected

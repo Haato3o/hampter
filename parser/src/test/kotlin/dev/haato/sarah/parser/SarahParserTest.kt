@@ -1,7 +1,7 @@
 package dev.haato.sarah.parser
 
 import dev.haato.sarah.lexer.SarahLexer
-import dev.haato.sarah.lexer.stream.TokenizableStream
+import dev.haato.sarah.lexer.stream.StringTokenizableStream
 import io.kotest.core.spec.style.ShouldSpec
 
 class SarahParserTest : ShouldSpec({
@@ -9,9 +9,9 @@ class SarahParserTest : ShouldSpec({
         val fileName = "example.kt"
         should("convert tokens into an abstract syntax tree") {
             val input = """
-                if (variable > *variablePtr) {} else {}
+                if (4 * 2 + -3) {} else {}
             """.trimIndent()
-            val stream = TokenizableStream(fileName, input)
+            val stream = StringTokenizableStream(fileName, input)
             val tokens = SarahLexer(stream).tokenize()
             val tree = SarahParser(tokens).parse()
 

@@ -22,7 +22,6 @@ import dev.haato.sarah.parser.Tokens.SCOPE_START
 import dev.haato.sarah.parser.Tokens.SEMI_COLON
 import java.util.LinkedList
 import java.util.Queue
-import kotlin.math.exp
 
 class SarahParser(
     private val tokens: List<SarahToken>

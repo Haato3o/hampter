@@ -4,6 +4,8 @@ enum class UnaryOperator(
     val symbol: String,
     val precedence: Int
 ) {
+    POSITIVE("+", 3),
+    NEGATIVE("-", 3),
     DEREFERENCE("*", 3),
     ADDRESS_OF("&", 3),
     LOGICAL_NOT("!", 3),

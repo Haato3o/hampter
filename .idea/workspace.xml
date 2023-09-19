@@ -5,17 +5,17 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="f80b6a4c-51aa-4294-a6b6-c6e558b37c29" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/parser/src/main/kotlin/dev/haato/sarah/ast/Operator.kt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/parser/src/main/kotlin/dev/haato/sarah/ast/SarahAbstractTree.kt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/parser/src/main/kotlin/dev/haato/sarah/ast/UnaryOperator.kt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/parser/src/main/kotlin/dev/haato/sarah/parser/Keywords.kt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/parser/src/main/kotlin/dev/haato/sarah/parser/SarahParser.kt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/parser/src/test/kotlin/dev/haato/sarah/parser/SarahParserTest.kt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/parser/src/main/kotlin/dev/haato/sarah/lexer/stream/StringTokenizableStream.kt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/parser/src/main/kotlin/dev/haato/sarah/lexer/stream/TokenizableFileStream.kt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/parser/src/main/kotlin/dev/haato/sarah/lexer/stream/TokenizableStreamFactory.kt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/parser/src/main/kotlin/dev/haato/sarah/ast/Arithmetic.kt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/parser/src/main/kotlin/dev/haato/sarah/ast/Expression.kt" beforeDir="false" afterPath="$PROJECT_DIR$/parser/src/main/kotlin/dev/haato/sarah/ast/Expression.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/parser/src/main/kotlin/dev/haato/sarah/ast/UnaryOperator.kt" beforeDir="false" afterPath="$PROJECT_DIR$/parser/src/main/kotlin/dev/haato/sarah/ast/UnaryOperator.kt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/parser/src/main/kotlin/dev/haato/sarah/lexer/SarahLexer.kt" beforeDir="false" afterPath="$PROJECT_DIR$/parser/src/main/kotlin/dev/haato/sarah/lexer/SarahLexer.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/parser/src/main/kotlin/dev/haato/sarah/lexer/stream/TokenizableStream.kt" beforeDir="false" afterPath="$PROJECT_DIR$/parser/src/main/kotlin/dev/haato/sarah/lexer/stream/TokenizableStream.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/parser/src/main/kotlin/dev/haato/sarah/parser/SarahParser.kt" beforeDir="false" afterPath="$PROJECT_DIR$/parser/src/main/kotlin/dev/haato/sarah/parser/SarahParser.kt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/parser/src/main/resources/examples/example.srh" beforeDir="false" afterPath="$PROJECT_DIR$/parser/src/main/resources/examples/example.srh" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/parser/src/test/kotlin/dev/haato/sarah/lexer/SarahLexerTest.kt" beforeDir="false" afterPath="$PROJECT_DIR$/parser/src/test/kotlin/dev/haato/sarah/lexer/SarahLexerTest.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/parser/src/test/kotlin/dev/haato/sarah/parser/SarahParserTest.kt" beforeDir="false" afterPath="$PROJECT_DIR$/parser/src/test/kotlin/dev/haato/sarah/parser/SarahParserTest.kt" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -62,8 +62,10 @@
     <option name="RECENT_TEMPLATES">
       <list>
         <option value="Kotlin Data Class" />
-        <option value="Kotlin Class" />
         <option value="Kotlin Enum" />
+        <option value="Kotlin Class" />
+        <option value="Kotlin Interface" />
+        <option value="Kotlin Object" />
       </list>
     </option>
   </component>
@@ -94,7 +96,7 @@
     &quot;project.structure.last.edited&quot;: &quot;Modules&quot;,
     &quot;project.structure.proportion&quot;: &quot;0.0&quot;,
     &quot;project.structure.side.proportion&quot;: &quot;0.21698904&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.pluginManager&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;terminal&quot;,
     &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
 }</component>
@@ -201,8 +203,8 @@
     <recent_temporary>
       <list>
         <item itemvalue="Kotest.SarahParserTest: convert tokens into an abstract syntax tree" />
-        <item itemvalue="Kotest.SarahParserTest: parse" />
         <item itemvalue="Gradle.SarahParserTest (1)" />
+        <item itemvalue="Kotest.SarahParserTest: parse" />
         <item itemvalue="Gradle.sarah [detekt]" />
         <item itemvalue="Kotest.SarahLexerTest: generate meaninful metadata" />
       </list>
@@ -224,7 +226,9 @@
       <workItem from="1694970406171" duration="7461000" />
       <workItem from="1695077036204" duration="2401000" />
       <workItem from="1695084871531" duration="1497000" />
-      <workItem from="1695091976439" duration="1655000" />
+      <workItem from="1695091976439" duration="2124000" />
+      <workItem from="1695099668191" duration="782000" />
+      <workItem from="1695101086532" duration="2127000" />
     </task>
     <servers />
   </component>
