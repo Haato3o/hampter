@@ -7,9 +7,10 @@ import dev.haato.sarah.metadata.FileMetadata
 class SarahLexer(
     private val stream: TokenizableStream
 ) {
-    private val tokens: MutableList<SarahToken> = mutableListOf()
 
     fun tokenize(): List<SarahToken> {
+        val tokens: MutableList<SarahToken> = mutableListOf()
+
         while (!stream.isOver()) {
             val metadata = stream.buildMetadata()
             val currentTokenValue = when (stream.peek()) {
@@ -69,7 +70,7 @@ class SarahLexer(
     companion object {
         private val endOfStringTokens = setOf('\n', '\r', ' ')
         private val scopeTokens = setOf('{', '}', '(', ')', '[', ']')
-        private val specialTokens = setOf(':', '+', '*', '/', '-', '>', '<', '=', ';', '^', '&', '|', '.', ',')
+        private val specialTokens = setOf(':', '+', '*', '/', '-', '>', '<', '=', '!', ';', '^', '&', '|', '.', ',', '?')
         private val discardTokens = setOf('\t') + endOfStringTokens
         private val invalidStringTokens = endOfStringTokens + scopeTokens + specialTokens
     }

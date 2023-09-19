@@ -1,18 +1,34 @@
+import std::*;
+
 namespace example;
 
-struct Person {
-    name: String
-    age: Int
+interface Foo {
+    fun getNumber() -> int
 }
 
-fun main() -> Void {
-    let variable: Int = 10;
-    let anotherVariable: Int = 5;
-    let stringfiedVariable: String = "This is my string with multiple words";
+class Bar : Foo {
+    field: String
+    anotherField: int
 
-    if (variable > anotherVariable) {
-        print(":)");
+    fun getNumber() -> int {
+        return anotherField;
+    }
+}
+
+struct FooBar {
+    field: int
+    arrayField: int[]
+}
+
+fun main() -> void {
+    let variable: int = 10;
+    let variablePtr: *int = &variable;
+    let stringfiedVariable: String = "This is my string with multiple words";
+    let
+
+    if (variable > *variablePtr) {
+        print("Poggies");
     } else {
-        print(":(");
+        print("Not poggies im so sadge");
     }
 }

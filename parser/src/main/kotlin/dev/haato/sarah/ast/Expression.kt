@@ -10,6 +10,11 @@ sealed class Expression {
         override val metadata: FileMetadata
     ) : Expression()
 
+    data class NamespaceExpression(
+        val path: List<LiteralExpression>,
+        override val metadata: FileMetadata
+    ) : Expression()
+
     data class ScopeExpression(
         val expressions: List<Expression>,
         override val metadata: FileMetadata
@@ -18,6 +23,7 @@ sealed class Expression {
     data class FieldExpression(
         val name: LiteralExpression,
         val type: LiteralExpression,
+        val isNullable: Boolean,
         override val metadata: FileMetadata
     ) : Expression()
 
@@ -40,7 +46,7 @@ sealed class Expression {
     data class DecisionExpression(
         val condition: Expression,
         val ifBlock: ScopeExpression,
-        val elseBLock: ScopeExpression,
+        val elseBLock: ScopeExpression?,
         override val metadata: FileMetadata
     ) : Expression()
 
@@ -50,8 +56,16 @@ sealed class Expression {
         override val metadata: FileMetadata
     ) : Expression()
 
-    data class ArithmeticExpression(
+    data class UnaryExpression(
+        val operator: UnaryOperator,
         val expression: Expression,
+        override val metadata: FileMetadata
+    ) : Expression()
+
+    data class BinaryExpression(
+        val operator: Operator,
+        val left: Expression,
+        val right: Expression,
         override val metadata: FileMetadata
     ) : Expression()
 

@@ -5,29 +5,17 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="f80b6a4c-51aa-4294-a6b6-c6e558b37c29" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/gradle.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/kotlinc.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/build.gradle.kts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/gradle.properties" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/gradle/wrapper/gradle-wrapper.jar" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/gradle/wrapper/gradle-wrapper.properties" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/gradlew" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/gradlew.bat" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/parser/src/main/kotlin/dev/haato/sarah/ast/Arithmetic.kt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/parser/src/main/kotlin/dev/haato/sarah/ast/Expression.kt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/parser/src/main/kotlin/dev/haato/sarah/lexer/SarahLexer.kt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/parser/src/main/kotlin/dev/haato/sarah/lexer/stream/TokenizableStream.kt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/parser/src/main/kotlin/dev/haato/sarah/lexer/token/SarahToken.kt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/parser/src/main/kotlin/dev/haato/sarah/metadata/FileMetadata.kt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/parser/src/main/kotlin/dev/haato/sarah/ast/Operator.kt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/parser/src/main/kotlin/dev/haato/sarah/ast/SarahAbstractTree.kt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/parser/src/main/kotlin/dev/haato/sarah/ast/UnaryOperator.kt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/parser/src/main/kotlin/dev/haato/sarah/parser/Keywords.kt" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/parser/src/main/kotlin/dev/haato/sarah/parser/SarahParser.kt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/parser/src/main/resources/examples/example.srh" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/parser/src/test/kotlin/dev/haato/sarah/lexer/SarahLexerTest.kt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/settings.gradle.kts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/parser/src/test/kotlin/dev/haato/sarah/parser/SarahParserTest.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/parser/src/main/kotlin/dev/haato/sarah/ast/Arithmetic.kt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/parser/src/main/kotlin/dev/haato/sarah/ast/Expression.kt" beforeDir="false" afterPath="$PROJECT_DIR$/parser/src/main/kotlin/dev/haato/sarah/ast/Expression.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/parser/src/main/kotlin/dev/haato/sarah/lexer/SarahLexer.kt" beforeDir="false" afterPath="$PROJECT_DIR$/parser/src/main/kotlin/dev/haato/sarah/lexer/SarahLexer.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/parser/src/main/resources/examples/example.srh" beforeDir="false" afterPath="$PROJECT_DIR$/parser/src/main/resources/examples/example.srh" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -73,9 +61,9 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
-        <option value="Kotlin Enum" />
         <option value="Kotlin Data Class" />
         <option value="Kotlin Class" />
+        <option value="Kotlin Enum" />
       </list>
     </option>
   </component>
@@ -118,7 +106,31 @@
       <recent name="dev.haato.sarah.lexer.stream" />
     </key>
   </component>
-  <component name="RunManager" selected="Gradle.sarah [detekt]">
+  <component name="RunManager" selected="Kotest.SarahParserTest: convert tokens into an abstract syntax tree">
+    <configuration name="SarahParserTest (1)" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
+      <ExternalSystemSettings>
+        <option name="executionName" />
+        <option name="externalProjectPath" value="$PROJECT_DIR$" />
+        <option name="externalSystemIdString" value="GRADLE" />
+        <option name="scriptParameters" value="" />
+        <option name="taskDescriptions">
+          <list />
+        </option>
+        <option name="taskNames">
+          <list>
+            <option value=":parser:test" />
+            <option value="--tests" />
+            <option value="&quot;dev.haato.sarah.parser.SarahParserTest&quot;" />
+          </list>
+        </option>
+        <option name="vmOptions" />
+      </ExternalSystemSettings>
+      <ExternalSystemDebugServerProcess>false</ExternalSystemDebugServerProcess>
+      <ExternalSystemReattachDebugProcess>true</ExternalSystemReattachDebugProcess>
+      <DebugAllEnabled>false</DebugAllEnabled>
+      <ForceTestExec>true</ForceTestExec>
+      <method v="2" />
+    </configuration>
     <configuration name="sarah [detekt]" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
       <ExternalSystemSettings>
         <option name="executionName" />
@@ -156,30 +168,30 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="SarahLexerTest: tokenize simple code" type="ioKotest" factoryName="Kotest" temporary="true" defaultName="singleModule">
+    <configuration name="SarahParserTest: convert tokens into an abstract syntax tree" type="ioKotest" factoryName="Kotest" temporary="true" defaultName="singleModule">
       <module name="sarah.parser.test" />
       <option name="jrePath" value="" />
       <option name="jrePathEnabled" value="false" />
       <option name="passParentEnvs" value="true" />
       <option name="workingDirectory" value="$MODULE_WORKING_DIR$" />
       <option name="programParameters" value="" />
-      <option name="specName" value="dev.haato.sarah.lexer.SarahLexerTest" />
-      <option name="testPath" value="tokenize -- tokenize simple code" />
+      <option name="specName" value="dev.haato.sarah.parser.SarahParserTest" />
+      <option name="testPath" value="parse -- convert tokens into an abstract syntax tree" />
       <option name="packageName" value="" />
       <option name="vmparams" value="" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="SarahLexerTest: tokenize" type="ioKotest" factoryName="Kotest" temporary="true" defaultName="singleModule">
+    <configuration name="SarahParserTest: parse" type="ioKotest" factoryName="Kotest" temporary="true" defaultName="singleModule">
       <module name="sarah.parser.test" />
       <option name="jrePath" value="" />
       <option name="jrePathEnabled" value="false" />
       <option name="passParentEnvs" value="true" />
       <option name="workingDirectory" value="$MODULE_WORKING_DIR$" />
       <option name="programParameters" value="" />
-      <option name="specName" value="dev.haato.sarah.lexer.SarahLexerTest" />
-      <option name="testPath" value="tokenize" />
+      <option name="specName" value="dev.haato.sarah.parser.SarahParserTest" />
+      <option name="testPath" value="parse" />
       <option name="packageName" value="" />
       <option name="vmparams" value="" />
       <method v="2">
@@ -188,10 +200,11 @@
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="Kotest.SarahParserTest: convert tokens into an abstract syntax tree" />
+        <item itemvalue="Kotest.SarahParserTest: parse" />
+        <item itemvalue="Gradle.SarahParserTest (1)" />
         <item itemvalue="Gradle.sarah [detekt]" />
         <item itemvalue="Kotest.SarahLexerTest: generate meaninful metadata" />
-        <item itemvalue="Kotest.SarahLexerTest: tokenize" />
-        <item itemvalue="Kotest.SarahLexerTest: tokenize simple code" />
       </list>
     </recent_temporary>
   </component>
@@ -205,7 +218,13 @@
       <updated>1694837827968</updated>
       <workItem from="1694837829048" duration="5273000" />
       <workItem from="1694843178468" duration="1573000" />
-      <workItem from="1694880266515" duration="12156000" />
+      <workItem from="1694880266515" duration="13585000" />
+      <workItem from="1694922909862" duration="48000" />
+      <workItem from="1694923660815" duration="13740000" />
+      <workItem from="1694970406171" duration="7461000" />
+      <workItem from="1695077036204" duration="2401000" />
+      <workItem from="1695084871531" duration="1497000" />
+      <workItem from="1695091976439" duration="1655000" />
     </task>
     <servers />
   </component>
