@@ -18,7 +18,7 @@ class SarahLexer(
                 val currentTokenValue = when (stream.peek()) {
                     in scopeTokens -> stream.readSingleChar()
                     in specialTokens -> stream.readCharWhile(specialTokens)
-                    '"' -> stream.readCharSequenceUntil(setOf('"'))
+                    '"' -> stream.readString()
                     in discardTokens -> {
                         stream.discard()
                         continue
@@ -53,10 +53,18 @@ class SarahLexer(
         }
     }
 
+    private fun TokenizableStream.readString(): String {
+        discard()
+        val string = readCharSequenceUntil(setOf('"'))
+        discard()
+
+        return string
+    }
+
     private fun TokenizableStream.readCharSequenceUntil(stopTokens: Set<Char>): String {
         return buildString {
             do {
-                when (peek()) {
+                when(peek()) {
                     in stopTokens -> return@buildString
                     else -> append(consume())
                 }

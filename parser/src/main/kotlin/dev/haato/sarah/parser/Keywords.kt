@@ -19,4 +19,5 @@ object Tokens {
     const val PARENTHESIS_END = ")"
     const val QUESTION_MARK = "?"
     const val ARROW = "->"
+    const val COMMA = ","
 }

@@ -12,5 +12,4 @@ interface TokenizableStream : Closeable {
     fun isOver(): Boolean
     fun getCurrentRow(): Int
     fun getCurrentColumn(): Int
-
 }

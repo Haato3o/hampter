@@ -13,6 +13,7 @@ import dev.haato.sarah.parser.Keywords.IF
 import dev.haato.sarah.parser.Keywords.NAMESPACE
 import dev.haato.sarah.parser.Keywords.STRUCT
 import dev.haato.sarah.parser.Tokens.COLON
+import dev.haato.sarah.parser.Tokens.COMMA
 import dev.haato.sarah.parser.Tokens.PARENTHESIS_END
 import dev.haato.sarah.parser.Tokens.PARENTHESIS_START
 import dev.haato.sarah.parser.Tokens.PERIOD
@@ -20,6 +21,8 @@ import dev.haato.sarah.parser.Tokens.QUESTION_MARK
 import dev.haato.sarah.parser.Tokens.SCOPE_END
 import dev.haato.sarah.parser.Tokens.SCOPE_START
 import dev.haato.sarah.parser.Tokens.SEMI_COLON
+import dev.haato.sarah.utils.DequeExtensions.tryPeek
+import java.util.Deque
 import java.util.LinkedList
 import java.util.Queue
 
@@ -28,12 +31,12 @@ class SarahParser(
 ) {
 
     fun parse(): SarahAbstractTree {
-        val tokensQueue: Queue<SarahToken> = LinkedList(tokens)
+        val tokensQueue: Deque<SarahToken> = LinkedList(tokens)
 
         return SarahAbstractTree(tokensQueue.buildScopeExpression())
     }
 
-    private fun Queue<SarahToken>.buildScopeExpression(): Expression.ScopeExpression {
+    private fun Deque<SarahToken>.buildScopeExpression(): Expression.ScopeExpression {
         val scopeToken = peek().takeIf { it.value == SCOPE_START }?.also { remove() }
         val scopeStarted = scopeToken != null
         val expressions = mutableListOf<Expression>()
@@ -44,7 +47,7 @@ class SarahParser(
                 STRUCT -> buildStructureExpression()
                 IF -> buildDecisionExpression()
                 SCOPE_END -> if (scopeStarted) break else continue
-                else -> throw NotImplementedError("ERROR: '${peek().value}' keyword not implemented.")
+                else -> buildBinaryExpression()
             }
 
             expressions.add(expression)
@@ -60,7 +63,7 @@ class SarahParser(
         )
     }
 
-    private fun Queue<SarahToken>.buildNamespaceExpression(): Expression.NamespaceExpression {
+    private fun Deque<SarahToken>.buildNamespaceExpression(): Expression.NamespaceExpression {
         val namespaceToken = remove()
         assert(namespaceToken.value == NAMESPACE)
 
@@ -81,7 +84,7 @@ class SarahParser(
         )
     }
 
-    private fun Queue<SarahToken>.buildLiteralExpression(): Expression.LiteralExpression {
+    private fun Deque<SarahToken>.buildLiteralExpression(): Expression.LiteralExpression {
         return remove().let {
             Expression.LiteralExpression(
                 value = it.value,
@@ -90,7 +93,7 @@ class SarahParser(
         }
     }
 
-    private fun Queue<SarahToken>.buildUnaryExpression(): Expression.UnaryExpression {
+    private fun Deque<SarahToken>.buildUnaryExpression(): Expression.UnaryExpression {
         val operatorToken = remove()
         val operator = UnaryOperator.bySymbol(operatorToken.value)
         val expression = buildBinaryExpression()
@@ -102,7 +105,7 @@ class SarahParser(
         )
     }
 
-    private fun Queue<SarahToken>.buildDecisionExpression(): Expression.DecisionExpression {
+    private fun Deque<SarahToken>.buildDecisionExpression(): Expression.DecisionExpression {
         val ifToken = remove()
         assert(ifToken.value == IF)
         assert(remove().value == PARENTHESIS_START)
@@ -125,7 +128,35 @@ class SarahParser(
         )
     }
 
-    private fun Queue<SarahToken>.buildFactorExpression(): Expression {
+    private fun Deque<SarahToken>.buildCallExpression(): Expression.CallExpression {
+        val calleeNameExpression = buildLiteralExpression()
+
+        assert(remove().value == PARENTHESIS_START)
+
+        val parameters = mutableListOf<Expression>()
+
+        while (peek().value != PARENTHESIS_END) {
+
+            parameters.add(buildBinaryExpression())
+
+            if (peek().value == COMMA)
+                remove()
+            else
+                break
+        }
+
+        assert(remove().value == PARENTHESIS_END)
+
+        peek().takeIf { it.value == SEMI_COLON }?.let { remove() }
+
+        return Expression.CallExpression(
+            callee = calleeNameExpression,
+            params = parameters,
+            metadata = calleeNameExpression.metadata
+        )
+    }
+
+    private fun Deque<SarahToken>.buildFactorExpression(): Expression {
         return when(peek().value) {
             PARENTHESIS_START -> {
                 remove()
@@ -137,17 +168,26 @@ class SarahParser(
 
             in unaryOperators -> buildUnaryExpression()
 
-            else -> buildLiteralExpression()
+            else -> {
+                val (currentToken, nextToken) = listOf(remove(), peek())
+
+                addFirst(currentToken)
+
+                when(nextToken.value) {
+                    PARENTHESIS_START -> buildCallExpression()
+                    else -> buildLiteralExpression()
+                }
+            }
         }
     }
 
-    private fun Queue<SarahToken>.buildTermExpression(precedence: Int): Expression {
+    private fun Deque<SarahToken>.buildTermExpression(precedence: Int): Expression {
         val nextPrecedence = precedence - 1
         val leftExpression = if (nextPrecedence < 0) buildFactorExpression() else buildTermExpression(nextPrecedence)
         val operators = operatorsByPrecedence[precedence]?.toSet() ?: setOf()
         val operatorTokens = operators.map { it.symbol }
 
-        if (peek().value in operatorTokens) {
+        if (tryPeek()?.value in operatorTokens) {
             val operator = Operator.bySymbol(remove().value)
             val rightExpression = if (nextPrecedence < 0) buildFactorExpression() else buildTermExpression(nextPrecedence)
 
@@ -162,11 +202,11 @@ class SarahParser(
         return leftExpression
     }
 
-    private fun Queue<SarahToken>.buildBinaryExpression(): Expression {
+    private fun Deque<SarahToken>.buildBinaryExpression(): Expression {
         return buildTermExpression(highestPrecedence)
     }
 
-    private fun Queue<SarahToken>.buildStructureExpression(): Expression.StructureExpression {
+    private fun Deque<SarahToken>.buildStructureExpression(): Expression.StructureExpression {
         val structToken = remove()
         assert(structToken.value == STRUCT)
         val structName = buildLiteralExpression()
@@ -186,7 +226,7 @@ class SarahParser(
         )
     }
 
-    private fun Queue<SarahToken>.buildFieldExpression(): Expression.FieldExpression {
+    private fun Deque<SarahToken>.buildFieldExpression(): Expression.FieldExpression {
         val fieldName = buildLiteralExpression()
 
         assert(remove().value == COLON)

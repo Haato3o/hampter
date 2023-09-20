@@ -5,16 +5,12 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="f80b6a4c-51aa-4294-a6b6-c6e558b37c29" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/parser/src/main/kotlin/dev/haato/sarah/lexer/stream/StringTokenizableStream.kt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/parser/src/main/kotlin/dev/haato/sarah/lexer/stream/TokenizableFileStream.kt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/parser/src/main/kotlin/dev/haato/sarah/lexer/stream/TokenizableStreamFactory.kt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/parser/src/main/kotlin/dev/haato/sarah/utils/DequeExtensions.kt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/parser/src/main/kotlin/dev/haato/sarah/ast/UnaryOperator.kt" beforeDir="false" afterPath="$PROJECT_DIR$/parser/src/main/kotlin/dev/haato/sarah/ast/UnaryOperator.kt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/parser/src/main/kotlin/dev/haato/sarah/lexer/SarahLexer.kt" beforeDir="false" afterPath="$PROJECT_DIR$/parser/src/main/kotlin/dev/haato/sarah/lexer/SarahLexer.kt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/parser/src/main/kotlin/dev/haato/sarah/lexer/stream/TokenizableStream.kt" beforeDir="false" afterPath="$PROJECT_DIR$/parser/src/main/kotlin/dev/haato/sarah/lexer/stream/TokenizableStream.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/parser/src/main/kotlin/dev/haato/sarah/parser/Keywords.kt" beforeDir="false" afterPath="$PROJECT_DIR$/parser/src/main/kotlin/dev/haato/sarah/parser/Keywords.kt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/parser/src/main/kotlin/dev/haato/sarah/parser/SarahParser.kt" beforeDir="false" afterPath="$PROJECT_DIR$/parser/src/main/kotlin/dev/haato/sarah/parser/SarahParser.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/parser/src/main/resources/examples/example.srh" beforeDir="false" afterPath="$PROJECT_DIR$/parser/src/main/resources/examples/example.srh" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/parser/src/test/kotlin/dev/haato/sarah/lexer/SarahLexerTest.kt" beforeDir="false" afterPath="$PROJECT_DIR$/parser/src/test/kotlin/dev/haato/sarah/lexer/SarahLexerTest.kt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/parser/src/test/kotlin/dev/haato/sarah/parser/SarahParserTest.kt" beforeDir="false" afterPath="$PROJECT_DIR$/parser/src/test/kotlin/dev/haato/sarah/parser/SarahParserTest.kt" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -203,8 +199,8 @@
     <recent_temporary>
       <list>
         <item itemvalue="Kotest.SarahParserTest: convert tokens into an abstract syntax tree" />
-        <item itemvalue="Gradle.SarahParserTest (1)" />
         <item itemvalue="Kotest.SarahParserTest: parse" />
+        <item itemvalue="Gradle.SarahParserTest (1)" />
         <item itemvalue="Gradle.sarah [detekt]" />
         <item itemvalue="Kotest.SarahLexerTest: generate meaninful metadata" />
       </list>
@@ -228,7 +224,8 @@
       <workItem from="1695084871531" duration="1497000" />
       <workItem from="1695091976439" duration="2124000" />
       <workItem from="1695099668191" duration="782000" />
-      <workItem from="1695101086532" duration="2127000" />
+      <workItem from="1695101086532" duration="2181000" />
+      <workItem from="1695181855011" duration="4111000" />
     </task>
     <servers />
   </component>

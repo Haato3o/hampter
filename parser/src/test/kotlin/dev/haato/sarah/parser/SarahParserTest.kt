@@ -9,7 +9,7 @@ class SarahParserTest : ShouldSpec({
         val fileName = "example.kt"
         should("convert tokens into an abstract syntax tree") {
             val input = """
-                if (4 * 2 + -3) {} else {}
+                runFunction(10, anotherFunction("poggies"), true || true && false);
             """.trimIndent()
             val stream = StringTokenizableStream(fileName, input)
             val tokens = SarahLexer(stream).tokenize()
