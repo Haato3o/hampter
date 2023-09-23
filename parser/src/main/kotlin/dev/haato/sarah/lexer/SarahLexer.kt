@@ -55,7 +55,7 @@ class SarahLexer(
 
     private fun TokenizableStream.readString(): String {
         discard()
-        val string = readCharSequenceUntil(setOf('"'))
+        val string = "\"${readCharSequenceUntil(setOf('"'))}\""
         discard()
 
         return string
