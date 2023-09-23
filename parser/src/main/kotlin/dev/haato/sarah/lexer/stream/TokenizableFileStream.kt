@@ -1,7 +1,6 @@
 package dev.haato.sarah.lexer.stream
 
 import java.io.BufferedReader
-import java.io.Closeable
 import java.io.File
 
 class TokenizableFileStream(
@@ -28,7 +27,7 @@ class TokenizableFileStream(
         nextChar = readNextChar()
 
         return currentChar?.also {
-            when(it) {
+            when (it) {
                 '\n' -> {
                     currentRow++
                     currentColumn = 0
@@ -52,7 +51,7 @@ class TokenizableFileStream(
     override fun getCurrentColumn() = currentColumn
 
     private fun readNextChar(): Char? {
-        return when(val charCode = stream.read()) {
+        return when (val charCode = stream.read()) {
             INVALID_CHAR -> null
             else -> charCode.toChar()
         }

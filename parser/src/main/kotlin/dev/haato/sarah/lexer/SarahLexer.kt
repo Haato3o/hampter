@@ -1,6 +1,5 @@
 package dev.haato.sarah.lexer
 
-import dev.haato.sarah.lexer.stream.TokenizableFileStream
 import dev.haato.sarah.lexer.stream.TokenizableStream
 import dev.haato.sarah.lexer.token.SarahToken
 import dev.haato.sarah.metadata.FileMetadata
@@ -64,7 +63,7 @@ class SarahLexer(
     private fun TokenizableStream.readCharSequenceUntil(stopTokens: Set<Char>): String {
         return buildString {
             do {
-                when(peek()) {
+                when (peek()) {
                     in stopTokens -> return@buildString
                     else -> append(consume())
                 }
@@ -81,7 +80,8 @@ class SarahLexer(
     companion object {
         private val endOfStringTokens = setOf('\n', '\r', ' ')
         private val scopeTokens = setOf('{', '}', '(', ')', '[', ']')
-        private val specialTokens = setOf(':', '+', '*', '/', '-', '>', '<', '=', '!', ';', '^', '&', '|', '.', ',', '?', '~')
+        private val specialTokens =
+            setOf(':', '+', '*', '/', '-', '>', '<', '=', '!', ';', '^', '&', '|', '.', ',', '?', '~')
         private val discardTokens = setOf('\t') + endOfStringTokens
         private val invalidStringTokens = endOfStringTokens + scopeTokens + specialTokens
     }

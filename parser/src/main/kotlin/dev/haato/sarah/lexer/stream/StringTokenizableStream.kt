@@ -39,5 +39,6 @@ class StringTokenizableStream(
 
     override fun getCurrentColumn() = currentColumn
 
+    @Suppress("EmptyFunctionBlock")
     override fun close() {}
 }

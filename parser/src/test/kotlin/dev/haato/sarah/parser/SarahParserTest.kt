@@ -16,7 +16,6 @@ class SarahParserTest : ShouldSpec({
             val tree = SarahParser(tokens).parse()
 
             println(tree)
-
         }
     }
 })
