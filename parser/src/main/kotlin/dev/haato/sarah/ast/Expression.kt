@@ -36,6 +36,7 @@ sealed class Expression {
     ) : Expression()
 
     data class DeclareExpression(
+        val declarationType: DeclarationType,
         val identifier: LiteralExpression,
         val type: LiteralExpression,
         val isNullable: Boolean,

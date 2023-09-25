@@ -20,4 +20,5 @@ object Tokens {
     const val QUESTION_MARK = "?"
     const val ARROW = "->"
     const val COMMA = ","
+    const val EQUAL = "="
 }

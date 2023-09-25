@@ -1,5 +1,6 @@
 package dev.haato.sarah.parser
 
+import dev.haato.sarah.ast.DeclarationType
 import dev.haato.sarah.ast.Expression
 import dev.haato.sarah.ast.Operator
 import dev.haato.sarah.ast.UnaryOperator
@@ -10,6 +11,7 @@ import dev.haato.sarah.parser.Keywords.NAMESPACE
 import dev.haato.sarah.parser.Keywords.STRUCT
 import dev.haato.sarah.parser.Tokens.COLON
 import dev.haato.sarah.parser.Tokens.COMMA
+import dev.haato.sarah.parser.Tokens.EQUAL
 import dev.haato.sarah.parser.Tokens.PARENTHESIS_END
 import dev.haato.sarah.parser.Tokens.PARENTHESIS_START
 import dev.haato.sarah.parser.Tokens.PERIOD
@@ -35,6 +37,7 @@ object SarahParserRules {
                 STRUCT -> buildStructureExpression()
                 IF -> buildDecisionExpression()
                 SCOPE_END -> if (scopeStarted) break else continue
+                in DeclarationType.values -> buildDeclareExpression()
                 else -> buildBinaryExpression()
             }
 
@@ -104,7 +107,7 @@ object SarahParserRules {
 
         val ifScopeExpression = buildScopeExpression()
 
-        val elseScopeExpression = peek().takeIf { it.value == ELSE }
+        val elseScopeExpression = tryPeek()?.takeIf { it.value == ELSE }
             ?.also { remove() }
             ?.let { buildScopeExpression() }
 
@@ -121,15 +124,15 @@ object SarahParserRules {
 
         assert(remove().value == PARENTHESIS_START)
 
-        val parameters = mutableListOf<Expression>()
+        val parameters = mutableListOf<Expression>().apply {
+            while (peek().value != PARENTHESIS_END) {
+                add(buildBinaryExpression())
 
-        while (peek().value != PARENTHESIS_END) {
-            parameters.add(buildBinaryExpression())
-
-            if (peek().value == COMMA) {
-                remove()
-            } else {
-                break
+                if (peek().value == COMMA) {
+                    remove()
+                } else {
+                    break
+                }
             }
         }
 
@@ -233,6 +236,36 @@ object SarahParserRules {
             type = fieldType,
             isNullable = isNullable,
             metadata = fieldName.metadata
+        )
+    }
+
+    private fun Deque<SarahToken>.buildDeclareExpression(): Expression.DeclareExpression {
+        val declareToken = peek()
+
+        assert(remove().value in DeclarationType.values)
+
+        val declarationType = DeclarationType.fromLabel(declareToken.value)
+        val identifierExpression = buildLiteralExpression()
+
+        // TODO: Make explicit type optional
+        assert(remove().value == COLON)
+        val typeExpression = buildLiteralExpression()
+
+        val isNullable = peek().takeIf { it.value == QUESTION_MARK }?.also { remove() } != null
+
+        assert(remove().value == EQUAL)
+
+        val expression = buildBinaryExpression()
+
+        assert(remove().value == SEMI_COLON)
+
+        return Expression.DeclareExpression(
+            declarationType = declarationType,
+            identifier = identifierExpression,
+            type = typeExpression,
+            isNullable = isNullable,
+            expression = expression,
+            metadata = declareToken.metadata
         )
     }
 }

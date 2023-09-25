@@ -25,7 +25,7 @@ class SarahLexerTest : ShouldSpec({
                 "return", "string", ".", "length", ";",
                 "}"
             )
-            val stream = StringTokenizableStream(fileName, input)
+            val stream = StringTokenizableStream(input)
             val lexer = SarahLexer(stream)
             val result = lexer.tokenize()
             val resultTokens = result.map { it.value }
@@ -55,7 +55,7 @@ class SarahLexerTest : ShouldSpec({
                 SarahToken(value = "Int", metadata = FileMetadata(35, 2, fileName)),
                 SarahToken(value = "}", metadata = FileMetadata(39, 2, fileName)),
             )
-            val stream = StringTokenizableStream(fileName, input)
+            val stream = StringTokenizableStream(input)
             val lexer = SarahLexer(stream)
 
             lexer.tokenize() shouldContainInOrder expected

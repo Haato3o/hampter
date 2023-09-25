@@ -1,9 +1,9 @@
 package dev.haato.sarah.lexer.stream
 
 class StringTokenizableStream(
-    override val fileName: String,
     private val text: String
 ) : TokenizableStream {
+    override val fileName: String = "example.srh"
     private var cursor: Int = 0
     private var currentColumn: Int = 0
     private var currentRow: Int = 0

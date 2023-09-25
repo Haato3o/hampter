@@ -5,8 +5,18 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="f80b6a4c-51aa-4294-a6b6-c6e558b37c29" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.github/workflows/push.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/.github/workflows/push.yaml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/parser/src/main/kotlin/dev/haato/sarah/ast/DeclarationType.kt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/parser/src/main/kotlin/dev/haato/sarah/visualization/SarahASTVisualizer.kt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/parser/src/test/kotlin/dev/haato/sarah/visualization/SarahASTVisualizerTest.kt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/parser/src/main/kotlin/dev/haato/sarah/ast/Expression.kt" beforeDir="false" afterPath="$PROJECT_DIR$/parser/src/main/kotlin/dev/haato/sarah/ast/Expression.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/parser/src/main/kotlin/dev/haato/sarah/lexer/stream/StringTokenizableStream.kt" beforeDir="false" afterPath="$PROJECT_DIR$/parser/src/main/kotlin/dev/haato/sarah/lexer/stream/StringTokenizableStream.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/parser/src/main/kotlin/dev/haato/sarah/lexer/stream/TokenizableStreamFactory.kt" beforeDir="false" afterPath="$PROJECT_DIR$/parser/src/main/kotlin/dev/haato/sarah/lexer/stream/TokenizableStreamFactory.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/parser/src/main/kotlin/dev/haato/sarah/parser/Keywords.kt" beforeDir="false" afterPath="$PROJECT_DIR$/parser/src/main/kotlin/dev/haato/sarah/parser/Keywords.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/parser/src/main/kotlin/dev/haato/sarah/parser/SarahParserRules.kt" beforeDir="false" afterPath="$PROJECT_DIR$/parser/src/main/kotlin/dev/haato/sarah/parser/SarahParserRules.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/parser/src/main/resources/examples/example.srh" beforeDir="false" afterPath="$PROJECT_DIR$/parser/src/main/resources/examples/example.srh" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/parser/src/test/kotlin/dev/haato/sarah/lexer/SarahLexerTest.kt" beforeDir="false" afterPath="$PROJECT_DIR$/parser/src/test/kotlin/dev/haato/sarah/lexer/SarahLexerTest.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/parser/src/test/kotlin/dev/haato/sarah/parser/SarahParserTest.kt" beforeDir="false" afterPath="$PROJECT_DIR$/parser/src/test/kotlin/dev/haato/sarah/parser/SarahParserTest.kt" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -53,9 +63,9 @@
     <option name="RECENT_TEMPLATES">
       <list>
         <option value="Kotlin Data Class" />
-        <option value="Kotlin Enum" />
         <option value="Kotlin Interface" />
         <option value="Kotlin Object" />
+        <option value="Kotlin Enum" />
         <option value="Kotlin Class" />
       </list>
     </option>
@@ -71,26 +81,26 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "RunOnceActivity.OpenProjectViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
-    "WebServerToolWindowFactoryState": "false",
-    "git-widget-placeholder": "main",
-    "jdk.selected.JAVA_MODULE": "graalvm-ce-17",
-    "node.js.detected.package.eslint": "true",
-    "node.js.detected.package.tslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.tslint": "(autodetect)",
-    "nodejs_package_manager_path": "npm",
-    "project.structure.last.edited": "Modules",
-    "project.structure.proportion": "0.0",
-    "project.structure.side.proportion": "0.21698904",
-    "settings.editor.selected.configurable": "reference.settingsdialog.project.gradle",
-    "vue.rearranger.settings.migration": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
+    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;main&quot;,
+    &quot;jdk.selected.JAVA_MODULE&quot;: &quot;graalvm-ce-17&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;project.structure.last.edited&quot;: &quot;Modules&quot;,
+    &quot;project.structure.proportion&quot;: &quot;0.0&quot;,
+    &quot;project.structure.side.proportion&quot;: &quot;0.21698904&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;reference.settingsdialog.project.gradle&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
-}]]></component>
+}</component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
       <recent name="C:\Users\mathe\IdeaProjects\sarah\parser\src\main\kotlin\dev\haato\sarah\lexer" />
@@ -100,7 +110,7 @@
     </key>
   </component>
   <component name="RunManager" selected="Gradle.sarah [detekt]">
-    <configuration name="SarahParserTest (1)" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
+    <configuration name="SarahASTVisualizerTest (1)" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
       <ExternalSystemSettings>
         <option name="executionName" />
         <option name="externalProjectPath" value="$PROJECT_DIR$" />
@@ -113,7 +123,7 @@
           <list>
             <option value=":parser:test" />
             <option value="--tests" />
-            <option value="&quot;dev.haato.sarah.parser.SarahParserTest&quot;" />
+            <option value="&quot;dev.haato.sarah.visualization.SarahASTVisualizerTest&quot;" />
           </list>
         </option>
         <option name="vmOptions" />
@@ -146,15 +156,30 @@
       <ForceTestExec>false</ForceTestExec>
       <method v="2" />
     </configuration>
-    <configuration name="SarahLexerTest: generate meaninful metadata" type="ioKotest" factoryName="Kotest" temporary="true" defaultName="singleModule">
+    <configuration name="SarahASTVisualizerTest: build tree" type="ioKotest" factoryName="Kotest" temporary="true" defaultName="singleModule">
       <module name="sarah.parser.test" />
       <option name="jrePath" value="" />
       <option name="jrePathEnabled" value="false" />
       <option name="passParentEnvs" value="true" />
       <option name="workingDirectory" value="$MODULE_WORKING_DIR$" />
       <option name="programParameters" value="" />
-      <option name="specName" value="dev.haato.sarah.lexer.SarahLexerTest" />
-      <option name="testPath" value="tokenize -- generate meaninful metadata" />
+      <option name="specName" value="dev.haato.sarah.visualization.SarahASTVisualizerTest" />
+      <option name="testPath" value="build -- build tree" />
+      <option name="packageName" value="" />
+      <option name="vmparams" value="" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="SarahASTVisualizerTest: build" type="ioKotest" factoryName="Kotest" temporary="true" defaultName="singleModule">
+      <module name="sarah.parser.test" />
+      <option name="jrePath" value="" />
+      <option name="jrePathEnabled" value="false" />
+      <option name="passParentEnvs" value="true" />
+      <option name="workingDirectory" value="$MODULE_WORKING_DIR$" />
+      <option name="programParameters" value="" />
+      <option name="specName" value="dev.haato.sarah.visualization.SarahASTVisualizerTest" />
+      <option name="testPath" value="build" />
       <option name="packageName" value="" />
       <option name="vmparams" value="" />
       <method v="2">
@@ -176,28 +201,13 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="SarahParserTest: parse" type="ioKotest" factoryName="Kotest" temporary="true" defaultName="singleModule">
-      <module name="sarah.parser.test" />
-      <option name="jrePath" value="" />
-      <option name="jrePathEnabled" value="false" />
-      <option name="passParentEnvs" value="true" />
-      <option name="workingDirectory" value="$MODULE_WORKING_DIR$" />
-      <option name="programParameters" value="" />
-      <option name="specName" value="dev.haato.sarah.parser.SarahParserTest" />
-      <option name="testPath" value="parse" />
-      <option name="packageName" value="" />
-      <option name="vmparams" value="" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
     <recent_temporary>
       <list>
         <item itemvalue="Gradle.sarah [detekt]" />
+        <item itemvalue="Kotest.SarahASTVisualizerTest: build tree" />
+        <item itemvalue="Gradle.SarahASTVisualizerTest (1)" />
+        <item itemvalue="Kotest.SarahASTVisualizerTest: build" />
         <item itemvalue="Kotest.SarahParserTest: convert tokens into an abstract syntax tree" />
-        <item itemvalue="Kotest.SarahParserTest: parse" />
-        <item itemvalue="Gradle.SarahParserTest (1)" />
-        <item itemvalue="Kotest.SarahLexerTest: generate meaninful metadata" />
       </list>
     </recent_temporary>
   </component>
@@ -225,7 +235,9 @@
       <workItem from="1695486828580" duration="66000" />
       <workItem from="1695486946598" duration="27000" />
       <workItem from="1695493918921" duration="17000" />
-      <workItem from="1695523644490" duration="516000" />
+      <workItem from="1695523644490" duration="1283000" />
+      <workItem from="1695525388009" duration="1521000" />
+      <workItem from="1695603745904" duration="10507000" />
     </task>
     <servers />
   </component>
