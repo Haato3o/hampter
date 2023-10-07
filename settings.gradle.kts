@@ -1,3 +1,3 @@
-rootProject.name = "sarah"
+rootProject.name = "hampter"
 
 include("parser")
